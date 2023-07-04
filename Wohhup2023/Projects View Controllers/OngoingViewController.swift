@@ -29,6 +29,9 @@ class OngoingViewController: UIViewController {
     @IBOutlet weak var ProjectTitle: UILabel!
     @IBOutlet weak var ProjectManager: UILabel!
     
+    var ProjectsArray: [UIButton] = []
+    
+    var allfieldsfilled = false
     
     var ProjectIDTextField: UITextField?
     var ProjectTitleTextField: UITextField?
@@ -113,14 +116,26 @@ class OngoingViewController: UIViewController {
 
     
     @objc func saveButtonPressed(_ sender: UIButton) {
-        sender.superview?.removeFromSuperview()
         
         ProjectID.text = ProjectIDTextField?.text ?? ""
         ProjectTitle.text = ProjectTitleTextField?.text ?? ""
         ProjectManager.text = ProjectManagerTextField?.text ?? ""
-        
-        
+        if ProjectID.text == "" || ProjectTitle.text == "" || ProjectManager.text == "" {
+            showErrorAlert(message: "Please fill in all fields before saving.")
+        }
+        else {
+            sender.superview?.removeFromSuperview()
+        }
+
     }
+    
+    func showErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 
     
 }
