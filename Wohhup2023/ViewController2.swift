@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController2: UIViewController {
     
+    var seguePerformed = false
+    
     private let imageView: UIImageView =  {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
         imageView.image = UIImage(named: "Wohhuplogo")
@@ -45,15 +47,20 @@ class ViewController2: UIViewController {
             
         }, completion: { done in
             if done {
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute:{
-                    performSegue(withIdentifier: "segue1", sender: self)
-                      
-            })
+                if !self.seguePerformed  {
+                    
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute:{
+                    self.performSegue(withIdentifier: "segue1", sender: self)
+                    self.seguePerformed = true
+                }) }
             }
         })
-        
-        
-        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue1" {
+            let destinationVC = segue.destination as? HomeViewController
+            destinationVC?.modalPresentationStyle = .fullScreen
+        }
     }
     
 

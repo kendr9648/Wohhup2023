@@ -18,6 +18,7 @@
 		3D4374112A5294FE00C1B2A4 /* Wohhup2023Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4374102A5294FE00C1B2A4 /* Wohhup2023Tests.swift */; };
 		3D43741B2A5294FE00C1B2A4 /* Wohhup2023UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D43741A2A5294FE00C1B2A4 /* Wohhup2023UITests.swift */; };
 		3D43741D2A5294FE00C1B2A4 /* Wohhup2023UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D43741C2A5294FE00C1B2A4 /* Wohhup2023UITestsLaunchTests.swift */; };
+		3D4AE21A2A53A5AD00CD602E /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4AE2192A53A5AD00CD602E /* ProjectsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3D4374162A5294FE00C1B2A4 /* Wohhup2023UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wohhup2023UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D43741A2A5294FE00C1B2A4 /* Wohhup2023UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wohhup2023UITests.swift; sourceTree = "<group>"; };
 		3D43741C2A5294FE00C1B2A4 /* Wohhup2023UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wohhup2023UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3D4AE2192A53A5AD00CD602E /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +107,10 @@
 			children = (
 				3D4373F92A5294FE00C1B2A4 /* AppDelegate.swift */,
 				3D4373FB2A5294FE00C1B2A4 /* SceneDelegate.swift */,
-				3D371E8F2A52B3B1006D7851 /* HomeViewController.swift */,
 				3D4373FD2A5294FE00C1B2A4 /* ViewController.swift */,
+				3D371E8F2A52B3B1006D7851 /* HomeViewController.swift */,
 				3D371E8D2A52AE2E006D7851 /* ViewController2.swift */,
+				3D4AE2192A53A5AD00CD602E /* ProjectsViewController.swift */,
 				3D4373FF2A5294FE00C1B2A4 /* Main.storyboard */,
 				3D4374022A5294FE00C1B2A4 /* Assets.xcassets */,
 				3D4374042A5294FE00C1B2A4 /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4AE21A2A53A5AD00CD602E /* ProjectsViewController.swift in Sources */,
 				3D371E902A52B3B1006D7851 /* HomeViewController.swift in Sources */,
 				3D4373FE2A5294FE00C1B2A4 /* ViewController.swift in Sources */,
 				3D371E8E2A52AE2E006D7851 /* ViewController2.swift in Sources */,
