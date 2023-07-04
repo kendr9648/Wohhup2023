@@ -293,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhS-z3-hYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="783.48214285714278"/>
+            <point key="canvasLocation" x="19" y="866"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="Shn-xN-DdP">
@@ -335,7 +335,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing Projects" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGv-bc-ScB">
-                                <rect key="frame" x="-1" y="18" width="186" height="78"/>
+                                <rect key="frame" x="14" y="18" width="186" height="78"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="ZEr-i5-6PN"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="g1N-jH-NuD"/>
@@ -386,6 +386,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HG5-VP-wXc">
+                                <rect key="frame" x="32" y="321.5" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="3lB-qA-Q6Y"/>
+                                    <constraint firstAttribute="height" constant="21" id="a6J-s3-5p3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tiF-Lr-Jdk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -394,25 +404,29 @@
                             <constraint firstItem="1xW-vp-zG4" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="1yG-iu-NFC"/>
                             <constraint firstItem="Hxv-pS-J83" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="135" id="Bsr-UE-zql"/>
                             <constraint firstItem="fsL-9F-gQO" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="GA1-gZ-Eir"/>
+                            <constraint firstItem="HG5-VP-wXc" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="Jh5-vo-6o5"/>
                             <constraint firstItem="Hxv-pS-J83" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-275" id="Wvs-Oi-Yxx"/>
+                            <constraint firstItem="nGv-bc-ScB" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-100" id="Zuh-Tb-brh"/>
                             <constraint firstItem="CvT-aa-5G0" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-100" id="g77-tP-unf"/>
                             <constraint firstItem="1xW-vp-zG4" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-50" id="nig-Ls-LqZ"/>
                             <constraint firstItem="CvT-aa-5G0" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="nvF-S8-Wbg"/>
-                            <constraint firstItem="nGv-bc-ScB" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-115" id="oIu-Sz-fha"/>
                             <constraint firstItem="fsL-9F-gQO" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-150" id="oNL-9K-ZeU"/>
+                            <constraint firstItem="HG5-VP-wXc" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" id="uIu-MM-1fe"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="ProjectDate" destination="HG5-VP-wXc" id="1re-mc-GhR"/>
                         <outlet property="ProjectID" destination="fsL-9F-gQO" id="r3C-z4-uwa"/>
                         <outlet property="ProjectManager" destination="1xW-vp-zG4" id="eTJ-6t-hys"/>
                         <outlet property="ProjectTitle" destination="CvT-aa-5G0" id="Eaa-CM-SkA"/>
+                        <segue destination="24e-OJ-hg0" kind="showDetail" identifier="backprojectfromongoing" id="m2X-N5-gK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wl8-l0-6QA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-701" y="862"/>
+            <point key="canvasLocation" x="-854" y="944"/>
         </scene>
         <!--Past View Controller-->
         <scene sceneID="qXX-ZL-6cr">
@@ -440,13 +454,17 @@
                             <constraint firstItem="fwc-VQ-8Lw" firstAttribute="centerY" secondItem="gIF-R9-Hne" secondAttribute="centerY" id="JrU-cr-z8V"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="24e-OJ-hg0" kind="showDetail" identifier="backprojectfrompast" id="2fC-ec-HIc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTG-nc-lD3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="860"/>
+            <point key="canvasLocation" x="936" y="942"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="m2X-N5-gK4"/>
         <segue reference="743-aP-ce3"/>
     </inferredMetricsTieBreakers>
     <resources>

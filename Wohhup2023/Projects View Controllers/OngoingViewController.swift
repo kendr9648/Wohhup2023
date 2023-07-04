@@ -28,8 +28,9 @@ class OngoingViewController: UIViewController {
     @IBOutlet weak var ProjectID: UILabel!
     @IBOutlet weak var ProjectTitle: UILabel!
     @IBOutlet weak var ProjectManager: UILabel!
+    @IBOutlet weak var ProjectDate: UILabel!
     
-    var ProjectsArray: [UIButton] = []
+    var ProjectsArray: [Projects] = []
     
     var allfieldsfilled = false
     
@@ -66,6 +67,7 @@ class OngoingViewController: UIViewController {
         ProjectIDTextField.borderStyle = .line
         ProjectIDTextField.layer.borderWidth = 1.0
         ProjectIDTextField.layer.borderColor = UIColor.black.cgColor
+        ProjectIDTextField.autocorrectionType = .no
         self.ProjectIDTextField = ProjectIDTextField
         newView.addSubview(ProjectIDTextField)
             
@@ -120,11 +122,14 @@ class OngoingViewController: UIViewController {
         ProjectID.text = ProjectIDTextField?.text ?? ""
         ProjectTitle.text = ProjectTitleTextField?.text ?? ""
         ProjectManager.text = ProjectManagerTextField?.text ?? ""
-        if ProjectID.text == "" || ProjectTitle.text == "" || ProjectManager.text == "" {
+        ProjectDate.text = AddressTextField?.text ?? ""
+        if ProjectID.text == "" || ProjectTitle.text == "" || ProjectManager.text == "" || ProjectDate.text == "" {
             showErrorAlert(message: "Please fill in all fields before saving.")
         }
         else {
             sender.superview?.removeFromSuperview()
+            let project = Projects(name: ProjectTitle.text, ID: ProjectID.text, manager: ProjectManager.text)
+            ProjectsArray.append(project)
         }
 
     }
