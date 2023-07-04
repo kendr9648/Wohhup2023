@@ -199,18 +199,74 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-6v-vt5">
+                                <rect key="frame" x="0.0" y="184" width="414" height="664"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="L4L-Je-fmL"/>
+                                    <constraint firstAttribute="height" constant="664" id="fVd-BO-dAs"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="4kI-XL-87L" kind="embed" identifier="ongoingsegue" id="Qyx-Pg-SJv"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-6s-7xO">
+                                <rect key="frame" x="0.0" y="185" width="414" height="658"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="IEZ-qA-ypn"/>
+                                    <constraint firstAttribute="height" constant="658" id="xmd-cj-SNy"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="2ys-0q-H6T" kind="embed" identifier="pastsegue" id="hiS-cZ-bgn"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-tE-AhN">
+                                <rect key="frame" x="57" y="131" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WFJ-ip-ohy"/>
+                                    <constraint firstAttribute="width" constant="100" id="uVS-Dg-B8N"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Ongoing"/>
+                                <connections>
+                                    <action selector="OngoingBtnPress:" destination="24e-OJ-hg0" eventType="touchUpInside" id="6C6-9C-Qzd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geP-i4-SV1">
+                                <rect key="frame" x="257" y="131" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Xje-tf-Riw"/>
+                                    <constraint firstAttribute="height" constant="30" id="amS-Zg-fYc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Past"/>
+                                <connections>
+                                    <action selector="PastBtnPress:" destination="24e-OJ-hg0" eventType="touchUpInside" id="KdJ-nf-eAF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TKR-gO-iyc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eEc-tE-AhN" firstAttribute="centerX" secondItem="OOk-bY-zFM" secondAttribute="centerX" constant="-100" id="1KO-5v-IX8"/>
+                            <constraint firstItem="eEc-tE-AhN" firstAttribute="centerY" secondItem="OOk-bY-zFM" secondAttribute="centerY" constant="-275" id="5Oy-hB-6ZH"/>
+                            <constraint firstItem="uQu-6s-7xO" firstAttribute="centerX" secondItem="OOk-bY-zFM" secondAttribute="centerX" id="8pb-bC-zIT"/>
                             <constraint firstItem="Cm9-S6-UAG" firstAttribute="centerY" secondItem="OOk-bY-zFM" secondAttribute="centerY" constant="-350" id="Fzs-w2-wE7"/>
+                            <constraint firstItem="iJy-6v-vt5" firstAttribute="centerY" secondItem="OOk-bY-zFM" secondAttribute="centerY" constant="95" id="HuO-v5-ADs"/>
+                            <constraint firstItem="geP-i4-SV1" firstAttribute="centerX" secondItem="OOk-bY-zFM" secondAttribute="centerX" constant="100" id="MiJ-H2-Sx6"/>
+                            <constraint firstItem="geP-i4-SV1" firstAttribute="centerY" secondItem="OOk-bY-zFM" secondAttribute="centerY" constant="-275" id="Rim-pl-s39"/>
                             <constraint firstItem="Cm9-S6-UAG" firstAttribute="centerX" secondItem="OOk-bY-zFM" secondAttribute="centerX" constant="-125" id="m2v-30-rRG"/>
+                            <constraint firstItem="uQu-6s-7xO" firstAttribute="centerY" secondItem="OOk-bY-zFM" secondAttribute="centerY" constant="93" id="tZa-5c-deH"/>
+                            <constraint firstItem="iJy-6v-vt5" firstAttribute="centerX" secondItem="OOk-bY-zFM" secondAttribute="centerX" id="xBb-zH-I0S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="OngoingView" destination="iJy-6v-vt5" id="ri1-BU-g1u"/>
+                        <outlet property="PastView" destination="uQu-6s-7xO" id="94D-ZL-NuG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhS-z3-hYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="784"/>
+            <point key="canvasLocation" x="18.840579710144929" y="783.48214285714278"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="Shn-xN-DdP">
@@ -242,6 +298,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4f3-vL-nwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-852" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="x9d-SZ-Go4">
+            <objects>
+                <viewController storyboardIdentifier="ongoing" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4kI-XL-87L" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XeP-ut-8Uz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGv-bc-ScB">
+                                <rect key="frame" x="12" y="13" width="169" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Ongoing Projects">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="systemBrownColor"/>
+                                            <font key="NSFont" size="24" name="Garamond-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tiF-Lr-Jdk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wl8-l0-6QA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784.05797101449286" y="861.83035714285711"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qXX-ZL-6cr">
+            <objects>
+                <viewController storyboardIdentifier="Past" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2ys-0q-H6T" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gIF-R9-Hne">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="658"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAST PROJECTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-VQ-8Lw">
+                                <rect key="frame" x="84.5" y="204" width="245" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="245" id="EHR-a3-eWA"/>
+                                    <constraint firstAttribute="height" constant="250" id="z5Y-tB-fEq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1sb-Vw-Dcj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fwc-VQ-8Lw" firstAttribute="centerX" secondItem="gIF-R9-Hne" secondAttribute="centerX" id="JSB-qa-xld"/>
+                            <constraint firstItem="fwc-VQ-8Lw" firstAttribute="centerY" secondItem="gIF-R9-Hne" secondAttribute="centerY" id="JrU-cr-z8V"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GTG-nc-lD3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="735" y="783"/>
         </scene>
     </scenes>
     <resources>
