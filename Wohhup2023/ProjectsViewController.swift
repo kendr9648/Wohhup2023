@@ -19,6 +19,11 @@ class ProjectsViewController: UIViewController {
     }
     @IBOutlet weak var OngoingView: UIView!
     @IBOutlet weak var PastView: UIView!
+ 
+    
+    @IBAction func BackBtn(_ sender: Any) {
+        self.performSegue(withIdentifier: "backtohomesegue", sender: self)
+    }
     
     @IBAction func OngoingBtnPress(_ sender: Any) {
         OngoingView.isHidden = false
@@ -28,6 +33,12 @@ class ProjectsViewController: UIViewController {
     @IBAction func PastBtnPress(_ sender: Any) {
         PastView.isHidden = false
         OngoingView.isHidden = true
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backtohomesegue" {
+            let destinationVC = segue.destination as? HomeViewController
+            destinationVC?.modalPresentationStyle = .fullScreen
+        }
     }
     
 }
