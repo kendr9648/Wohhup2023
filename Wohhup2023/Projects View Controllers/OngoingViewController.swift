@@ -8,14 +8,59 @@
 import Foundation
 import SwiftUI
 import UIKit
+import CoreData
 
 class OngoingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
+        
+        do {
+            let savedData = try managedContext.fetch(fetchRequest)
+            
+            // Access the retrieved data here
+            for object in savedData {
+                let project = Projects(name: "", ID: "", manager: "", address: "")
+
+                if let tempName = object.value(forKey: "name") as? String {
+                    project.name = tempName
+                    // Access the value of name
+                }
+                if let tempID = object.value(forKey: "id") as? String {
+                    project.ID = tempID
+                    // Access the value of id
+                }
+                if let tempAddress = object.value(forKey: "address") as? String {
+                    project.address = tempAddress
+                    // Access the value of address
+                }
+                if let tempManager = object.value(forKey: "manager") as? String {
+                    project.manager = tempManager
+                    // Access the value of manager
+                }
+                ProjectsArray.append(project)
+
+            }
+        } catch let error as NSError {
+            print("Failed to fetch data. Error: \(error), \(error.userInfo)")
+        }
+        for objects in ProjectsArray {
+            ProjectID.text = objects.ID
+            ProjectTitle.text = objects.name
+            ProjectManager.text = objects.manager
+            ProjectDate.text = objects.address
+        }
     }
     
     var dynamicTextFields: [UITextField] = []
+    
+
     
     func generateTextField() {
         let textField = UITextField()
@@ -128,10 +173,30 @@ class OngoingViewController: UIViewController {
         }
         else {
             sender.superview?.removeFromSuperview()
-            let project = Projects(name: ProjectTitle.text, ID: ProjectID.text, manager: ProjectManager.text)
+            let project = Projects(name: ProjectTitle.text, ID: ProjectID.text, manager: ProjectManager.text, address: ProjectDate.text)
             ProjectsArray.append(project)
-        }
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
 
+            let managedContext = appDelegate.persistentContainer.viewContext
+                let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
+                let newObject = NSManagedObject(entity: entity, insertInto: managedContext)
+                
+                newObject.setValue(project.name, forKey: "name")
+                newObject.setValue(project.ID, forKey: "id")
+                newObject.setValue(project.address, forKey: "address")
+                newObject.setValue(project.manager, forKey: "manager")
+                // Set other properties as needed
+            
+            do {
+                try managedContext.save()
+                print("Array saved successfully.")
+            } catch let error as NSError {
+                print("Failed to save array. Error: \(error), \(error.userInfo)")
+            }
+        }
     }
     
     func showErrorAlert(message: String) {
