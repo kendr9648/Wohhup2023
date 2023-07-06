@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import UIKit
 import CoreData
+import SystemConfiguration
+
 
 class OngoingViewController: UIViewController {
     
@@ -75,6 +77,7 @@ class OngoingViewController: UIViewController {
     @IBOutlet weak var ProjectManager: UILabel!
     @IBOutlet weak var ProjectDate: UILabel!
     
+    
     var ProjectsArray: [Projects] = []
     
     var allfieldsfilled = false
@@ -83,8 +86,25 @@ class OngoingViewController: UIViewController {
     var ProjectTitleTextField: UITextField?
     var ProjectManagerTextField: UITextField?
     var AddressTextField: UITextField?
-
     
+    
+    // checks on network status.
+    /*
+    switch networkStatus {
+    case .satisfied:
+        // Network is reachable
+        break
+    case .unsatisfied:
+        // Network is not reachable
+        break
+    case .requiresConnection:
+        // Network requires connection (e.g., VPN)
+        break
+    @unknown default:
+        break
+    }*/
+
+    //New project button is pressed
     @IBAction func NewProjectBtnPress(_ sender: Any) {
         let newView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         newView.backgroundColor = UIColor.white
@@ -161,7 +181,7 @@ class OngoingViewController: UIViewController {
         // Handle the selected date
     }
 
-    
+    // Save button is pressed
     @objc func saveButtonPressed(_ sender: UIButton) {
         
         ProjectID.text = ProjectIDTextField?.text ?? ""

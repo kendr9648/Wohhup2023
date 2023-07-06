@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D29D36B2A53F66600C51EBA /* ProjectClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D29D36A2A53F66600C51EBA /* ProjectClass.swift */; };
 		3D29D36E2A54FC4500C51EBA /* Projects.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D29D36C2A54FC4500C51EBA /* Projects.xcdatamodeld */; };
+		3D29D3702A56492F00C51EBA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D29D36F2A56492F00C51EBA /* NetworkManager.swift */; };
 		3D371E8E2A52AE2E006D7851 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D371E8D2A52AE2E006D7851 /* ViewController2.swift */; };
 		3D371E902A52B3B1006D7851 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D371E8F2A52B3B1006D7851 /* HomeViewController.swift */; };
 		3D4373FA2A5294FE00C1B2A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4373F92A5294FE00C1B2A4 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		3D29D36A2A53F66600C51EBA /* ProjectClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectClass.swift; sourceTree = "<group>"; };
 		3D29D36D2A54FC4500C51EBA /* Projects.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Projects.xcdatamodel; sourceTree = "<group>"; };
+		3D29D36F2A56492F00C51EBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D371E8D2A52AE2E006D7851 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		3D371E8F2A52B3B1006D7851 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D4373F62A5294FE00C1B2A4 /* Wohhup2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wohhup2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 			children = (
 				3D4373F92A5294FE00C1B2A4 /* AppDelegate.swift */,
 				3D29D36C2A54FC4500C51EBA /* Projects.xcdatamodeld */,
+				3D29D36F2A56492F00C51EBA /* NetworkManager.swift */,
 				3D4373FB2A5294FE00C1B2A4 /* SceneDelegate.swift */,
 				3D4373FD2A5294FE00C1B2A4 /* ViewController.swift */,
 				3D371E8F2A52B3B1006D7851 /* HomeViewController.swift */,
@@ -291,6 +294,7 @@
 				3D29D36E2A54FC4500C51EBA /* Projects.xcdatamodeld in Sources */,
 				3D29D36B2A53F66600C51EBA /* ProjectClass.swift in Sources */,
 				3D371E902A52B3B1006D7851 /* HomeViewController.swift in Sources */,
+				3D29D3702A56492F00C51EBA /* NetworkManager.swift in Sources */,
 				3D69B34A2A53BC0B0053430D /* PastViewController.swift in Sources */,
 				3D4373FE2A5294FE00C1B2A4 /* ViewController.swift in Sources */,
 				3D371E8E2A52AE2E006D7851 /* ViewController2.swift in Sources */,

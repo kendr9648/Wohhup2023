@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import UIKit
+import CoreData
+import SystemConfiguration
 
 class HomeViewController: UIViewController {
     

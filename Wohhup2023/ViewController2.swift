@@ -7,6 +7,8 @@
 
 import SwiftUI
 import UIKit
+import CoreData
+import SystemConfiguration
 
 class ViewController2: UIViewController {
     

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SystemConfiguration
+import CoreData
+
 
 class LaunchScreen: UIViewController {
 
