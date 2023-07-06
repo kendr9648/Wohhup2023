@@ -45,7 +45,7 @@ class NetworkManager {
             fetchRequest.predicate = predicate
             do {
                 // replace url with actual URL !!!
-                guard let url = URL(string: "https://example.com/api/endpoint") else {
+                guard let url = URL(string: "https://main.d2tx8mrw7p4gq8.amplifyapp.com/") else {
                     // Handle invalid URL
                     return
                 }

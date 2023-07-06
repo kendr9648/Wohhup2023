@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import CoreData
 import SystemConfiguration
+import Amplify
 
 class PastViewController: UIViewController {
     
