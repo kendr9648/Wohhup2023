@@ -87,22 +87,6 @@ class OngoingViewController: UIViewController {
     var ProjectManagerTextField: UITextField?
     var AddressTextField: UITextField?
     
-    
-    // checks on network status.
-    /*
-    switch networkStatus {
-    case .satisfied:
-        // Network is reachable
-        break
-    case .unsatisfied:
-        // Network is not reachable
-        break
-    case .requiresConnection:
-        // Network requires connection (e.g., VPN)
-        break
-    @unknown default:
-        break
-    }*/
 
     //New project button is pressed
     @IBAction func NewProjectBtnPress(_ sender: Any) {
@@ -184,6 +168,9 @@ class OngoingViewController: UIViewController {
     // Save button is pressed
     @objc func saveButtonPressed(_ sender: UIButton) {
         
+        //test print
+        print("save button pressed")
+        
         ProjectID.text = ProjectIDTextField?.text ?? ""
         ProjectTitle.text = ProjectTitleTextField?.text ?? ""
         ProjectManager.text = ProjectManagerTextField?.text ?? ""
@@ -208,6 +195,7 @@ class OngoingViewController: UIViewController {
                 newObject.setValue(project.ID, forKey: "id")
                 newObject.setValue(project.address, forKey: "address")
                 newObject.setValue(project.manager, forKey: "manager")
+                newObject.setValue(false, forKey: "synchronised")
                 // Set other properties as needed
             
             do {
