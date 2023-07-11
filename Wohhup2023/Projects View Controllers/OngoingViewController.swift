@@ -25,6 +25,26 @@ class OngoingViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
         
+        buttonStackView = UIStackView()
+            buttonStackView.axis = .vertical
+            buttonStackView.spacing = 8 // Adjust spacing between buttons
+            buttonStackView.alignment = .fill
+            buttonStackView.distribution = .fill
+
+            // Add the stack view to the main view
+            view.addSubview(buttonStackView)
+
+            // Configure layout constraints
+            buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                buttonStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+                buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            ])
+
+            // Generate buttons
+            generateButtonsCoreData()
+        
         do {
             let savedData = try managedContext.fetch(fetchRequest)
             
@@ -63,7 +83,9 @@ class OngoingViewController: UIViewController {
     }
     
     var dynamicTextFields: [UITextField] = []
-    
+    var buttonArray: [UIButton] = []
+    var buttonStackView: UIStackView!
+
 
     
     func generateTextField() {
@@ -207,6 +229,7 @@ class OngoingViewController: UIViewController {
                 print("Failed to save array. Error: \(error), \(error.userInfo)")
             }
         }
+        generateButtons(title: ProjectTitle.text ?? "")
     }
     
     func showErrorAlert(message: String) {
@@ -215,6 +238,71 @@ class OngoingViewController: UIViewController {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
+    
+    func generateButtonsCoreData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Button")
+            do {
+                let results = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+                for buttonObject in results ?? [] {
+                    let button = UIButton(type: .system)
+                    button.setTitle(buttonObject.value(forKeyPath: "title") as? String, for: .normal)
+                    button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+
+                    // Customize button properties as needed
+
+                    buttonStackView.addArrangedSubview(button)
+                }
+            } catch let error as NSError {
+                print("Could not fetch button data. \(error), \(error.userInfo)")
+            }
+    }
+    
+    func generateButtons(title: String) {
+        // Create a new button
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+
+        // Customize button properties as needed
+
+        // Add the button to the array
+        buttonArray.append(button)
+
+        // Add the button to the view
+        buttonStackView.addArrangedSubview(button)
+
+        // Configure layout constraints if necessary
+        // ...
+        
+        // Save Button to core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+
+            let entity = NSEntityDescription.entity(forEntityName: "Button", in: managedContext)!
+            let buttonObject = NSManagedObject(entity: entity, insertInto: managedContext)
+            buttonObject.setValue(title, forKeyPath: "title")
+
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Could not save button data. \(error), \(error.userInfo)")
+            }
+    }
+    
+    @objc func buttonTapped(_ sender: UIButton) {
+        // Handle button tap action here
+        // You can perform any necessary actions, such as navigating to a new view controller
+        
+    }
+
+
 
 
     

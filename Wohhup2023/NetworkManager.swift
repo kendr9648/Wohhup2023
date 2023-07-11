@@ -46,7 +46,7 @@ class NetworkManager {
             do {
                 // replace url with actual URL !!!
                 guard let url = URL(string: "https://main.d2tx8mrw7p4gq8.amplifyapp.com/") else {
-                    // Handle invalid URL
+                    print("Invalid URL")
                     return
                 }
 
@@ -59,29 +59,33 @@ class NetworkManager {
                     if let name = Project.name {
                         print(name)
                         request.httpBody = name.data(using: .utf8)
+                        print("name sent to url")
                     }
                     if let id = Project.id {
                         print(id)
                         request.httpBody = id.data(using: .utf8)
+                        print("id sent to url")
                     }
                     if let address = Project.address {
                         print(address)
                         request.httpBody = address.data(using: .utf8)
+                        print("address sent to url")
                     }
                     if let manager = Project.manager {
                         print(manager)
                         request.httpBody = manager.data(using: .utf8)
+                        print("manager sent to url")
                     }
+                    
                     let session = URLSession.shared
                     let task = session.dataTask(with: request) { (data, response, error) in
                         // Process the response or handle any errors
                         if let error = error {
-                            // Handle the request error
+                            print(error)
                             return
                         }
 
                         guard let data = data else {
-                            // Handle empty or invalid response data
                             return
                         }
 
