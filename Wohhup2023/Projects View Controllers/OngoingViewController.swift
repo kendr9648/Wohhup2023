@@ -25,6 +25,17 @@ class OngoingViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
         
+        scrollView = UIScrollView()
+            view.addSubview(scrollView)
+            scrollView.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+                scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+                scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        
         buttonStackView = UIStackView()
             buttonStackView.axis = .vertical
             buttonStackView.spacing = 8 // Adjust spacing between buttons
@@ -32,12 +43,12 @@ class OngoingViewController: UIViewController {
             buttonStackView.distribution = .fill
 
             // Add the stack view to the main view
-            view.addSubview(buttonStackView)
+            scrollView.addSubview(buttonStackView)
 
             // Configure layout constraints
             buttonStackView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                buttonStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+                buttonStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
                 buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
                 buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             ])
@@ -82,9 +93,15 @@ class OngoingViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = buttonStackView.frame.size
+    }
+    
     var dynamicTextFields: [UITextField] = []
     var buttonArray: [UIButton] = []
     var buttonStackView: UIStackView!
+    var scrollView: UIScrollView!
 
 
     
@@ -228,8 +245,8 @@ class OngoingViewController: UIViewController {
             } catch let error as NSError {
                 print("Failed to save array. Error: \(error), \(error.userInfo)")
             }
+            generateButtons(title: ProjectTitle.text ?? "")
         }
-        generateButtons(title: ProjectTitle.text ?? "")
     }
     
     func showErrorAlert(message: String) {
@@ -252,7 +269,20 @@ class OngoingViewController: UIViewController {
                     let button = UIButton(type: .system)
                     button.setTitle(buttonObject.value(forKeyPath: "title") as? String, for: .normal)
                     button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+                    
+                    // Configure layout constraints if necessary
+                    button.translatesAutoresizingMaskIntoConstraints = false
+                    // Create width and height constraints
+                    let widthConstraint = button.widthAnchor.constraint(equalToConstant: 200) // Adjust the width as needed
+                    let heightConstraint = button.heightAnchor.constraint(equalToConstant: 60) // Adjust the height as needed
 
+                    // Activate the constraints
+                    NSLayoutConstraint.activate([widthConstraint, heightConstraint])
+                    button.backgroundColor = UIColor.systemBrown
+                    button.layer.cornerRadius = 8 // Apply rounded corners with a specific radius
+                    button.layer.masksToBounds = true // Clip subviews to the rounded corners
+                    button.setTitleColor(UIColor.white, for: .normal)
+                    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
                     // Customize button properties as needed
 
                     buttonStackView.addArrangedSubview(button)
@@ -277,7 +307,19 @@ class OngoingViewController: UIViewController {
         buttonStackView.addArrangedSubview(button)
 
         // Configure layout constraints if necessary
-        // ...
+        button.translatesAutoresizingMaskIntoConstraints = false
+        // Create width and height constraints
+        let widthConstraint = button.widthAnchor.constraint(equalToConstant: 200) // Adjust the width as needed
+        let heightConstraint = button.heightAnchor.constraint(equalToConstant: 60) // Adjust the height as needed
+
+        // Activate the constraints
+        NSLayoutConstraint.activate([widthConstraint, heightConstraint])
+        button.backgroundColor = UIColor.systemBrown
+        button.layer.cornerRadius = 8 // Apply rounded corners with a specific radius
+        button.layer.masksToBounds = true // Clip subviews to the rounded corners
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+
         
         // Save Button to core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -297,8 +339,7 @@ class OngoingViewController: UIViewController {
     }
     
     @objc func buttonTapped(_ sender: UIButton) {
-        // Handle button tap action here
-        // You can perform any necessary actions, such as navigating to a new view controller
+        // Opens up each project when tapped.
         
     }
 
