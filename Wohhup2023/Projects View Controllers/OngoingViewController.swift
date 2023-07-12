@@ -93,10 +93,12 @@ class OngoingViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = buttonStackView.frame.size
     }
+    
     
     var dynamicTextFields: [UITextField] = []
     var buttonArray: [UIButton] = []
@@ -112,6 +114,7 @@ class OngoingViewController: UIViewController {
         dynamicTextFields.append(textField)
         view.addSubview(textField)
     }
+    
     
     @IBOutlet weak var ProjectID: UILabel!
     @IBOutlet weak var ProjectTitle: UILabel!
@@ -193,18 +196,19 @@ class OngoingViewController: UIViewController {
         let dateText = UILabel(frame: CGRect(x: 20, y: 475, width: 300, height: 40))
         dateText.text = "Expected Completion Date:"
         newView.addSubview(dateText)
-        
- 
     }
+    
     
     @objc func cancelButtonPressed(_ sender: UIButton) {
         sender.superview?.removeFromSuperview() // Remove the new view when cancel button is pressed
     }
     
+    
     @objc func datePickerValueChanged(_ datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
         // Handle the selected date
     }
+    
 
     // Save button is pressed
     @objc func saveButtonPressed(_ sender: UIButton) {
@@ -249,12 +253,14 @@ class OngoingViewController: UIViewController {
         }
     }
     
+    
     func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
+    
     
     func generateButtonsCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -339,12 +345,11 @@ class OngoingViewController: UIViewController {
     }
     
     @objc func buttonTapped(_ sender: UIButton) {
-        // Opens up each project when tapped.
+        let newView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        newView.backgroundColor = UIColor.white
+        view.addSubview(newView)
         
     }
-
-
-
-
+    
     
 }
