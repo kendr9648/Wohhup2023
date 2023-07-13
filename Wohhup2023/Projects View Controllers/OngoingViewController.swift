@@ -203,6 +203,10 @@ class OngoingViewController: UIViewController {
         sender.superview?.removeFromSuperview() // Remove the new view when cancel button is pressed
     }
     
+    @objc func backButtonPressed(_ sender: UIButton) {
+        sender.superview?.removeFromSuperview() // Takes down the view when back button is cancelled.
+    }
+    
     
     @objc func datePickerValueChanged(_ datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
@@ -348,6 +352,40 @@ class OngoingViewController: UIViewController {
         let newView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         newView.backgroundColor = UIColor.white
         view.addSubview(newView)
+        
+        let backButton = UIButton(type: .system)
+        backButton.setTitle("Cancel", for: .normal)
+        backButton.frame = CGRect(x: 16, y: 16, width: 60, height: 40)
+        backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
+        newView.addSubview(backButton)
+        
+        let ProjectIDLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 40))
+        ProjectIDLabel.layer.borderWidth = 1.0
+        ProjectIDLabel.layer.borderColor = UIColor.black.cgColor
+        //self.ProjectIDTextField = ProjectIDTextField
+        newView.addSubview(ProjectIDLabel)
+            
+        let ProjectTitleLabel = UILabel(frame: CGRect(x: 20, y: 175, width: 200, height: 40))
+        ProjectTitleLabel.layer.borderWidth = 1.0
+        ProjectTitleLabel.layer.borderColor = UIColor.black.cgColor
+        //self.ProjectTitleTextField = ProjectTitleTextField
+        newView.addSubview(ProjectTitleLabel)
+        
+        let AddressTextField = UITextField(frame: CGRect(x: 20, y: 275, width: 300, height: 40))
+        AddressTextField.placeholder = "Project Address"
+        AddressTextField.borderStyle = .line
+        AddressTextField.layer.borderWidth = 1.0
+        AddressTextField.layer.borderColor = UIColor.black.cgColor
+        self.AddressTextField = AddressTextField
+        newView.addSubview(AddressTextField)
+        
+        let ProjectManagerTextField = UITextField(frame: CGRect(x: 20, y: 375, width: 200, height: 40))
+        ProjectManagerTextField.placeholder = "Project Manager"
+        ProjectManagerTextField.borderStyle = .line
+        ProjectManagerTextField.layer.borderWidth = 1.0
+        ProjectManagerTextField.layer.borderColor = UIColor.black.cgColor
+        self.ProjectManagerTextField = ProjectManagerTextField
+        newView.addSubview(ProjectManagerTextField)
         
     }
     

@@ -91,6 +91,7 @@ class NetworkManager {
 
                         // Parse and process the response data
                     }
+                    Project.setValue(true, forKey: "synchronised")
 
                     task.resume()
                     // Access other properties as needed
