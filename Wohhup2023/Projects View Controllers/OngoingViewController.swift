@@ -343,12 +343,28 @@ class OngoingViewController: UIViewController {
 
             do {
                 try managedContext.save()
-            } catch let error as NSError {
+            }
+            catch let error as NSError {
                 print("Could not save button data. \(error), \(error.userInfo)")
             }
     }
     
     @objc func buttonTapped(_ sender: UIButton) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+
+            let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
+            let buttonObject = NSManagedObject(entity: entity, insertInto: managedContext)
+            do {
+                try managedContext.save()
+            }
+            catch let error as NSError {
+                print("Could not save button data. \(error), \(error.userInfo)")
+            }
+        
         let newView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         newView.backgroundColor = UIColor.white
         view.addSubview(newView)
@@ -371,21 +387,17 @@ class OngoingViewController: UIViewController {
         //self.ProjectTitleTextField = ProjectTitleTextField
         newView.addSubview(ProjectTitleLabel)
         
-        let AddressTextField = UITextField(frame: CGRect(x: 20, y: 275, width: 300, height: 40))
-        AddressTextField.placeholder = "Project Address"
-        AddressTextField.borderStyle = .line
-        AddressTextField.layer.borderWidth = 1.0
-        AddressTextField.layer.borderColor = UIColor.black.cgColor
-        self.AddressTextField = AddressTextField
-        newView.addSubview(AddressTextField)
+        let AddressTextLabel = UILabel(frame: CGRect(x: 20, y: 275, width: 300, height: 40))
+        AddressTextLabel.layer.borderWidth = 1.0
+        AddressTextLabel.layer.borderColor = UIColor.black.cgColor
+        //self.AddressTextLabel = AddressTextField
+        newView.addSubview(AddressTextLabel)
         
-        let ProjectManagerTextField = UITextField(frame: CGRect(x: 20, y: 375, width: 200, height: 40))
-        ProjectManagerTextField.placeholder = "Project Manager"
-        ProjectManagerTextField.borderStyle = .line
-        ProjectManagerTextField.layer.borderWidth = 1.0
-        ProjectManagerTextField.layer.borderColor = UIColor.black.cgColor
-        self.ProjectManagerTextField = ProjectManagerTextField
-        newView.addSubview(ProjectManagerTextField)
+        let ProjectManagerTextLabel = UILabel(frame: CGRect(x: 20, y: 375, width: 200, height: 40))
+        ProjectManagerTextLabel.layer.borderWidth = 1.0
+        ProjectManagerTextLabel.layer.borderColor = UIColor.black.cgColor
+        //self.ProjectManagerTextLabel = ProjectManagerTextField
+        newView.addSubview(ProjectManagerTextLabel)
         
     }
     
