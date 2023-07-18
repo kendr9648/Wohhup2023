@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import SystemConfiguration
 import Network
+import Amplify
 
 
 @main
@@ -32,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
             }
+        
+        do {     //initiliase amplify for connection to AWS
+            try Amplify.configure()
+            print("Amplify configured successfully")
+        } catch {
+            print("An error occurred while configuring Amplify: \(error)")
+        }
         
         // Override point for customization after application launch.
         return true
