@@ -351,16 +351,45 @@ class OngoingViewController: UIViewController {
     
     @objc func buttonTapped(_ sender: UIButton) {
         
+        let title = sender.title(for: .normal)
+        var tempoName = ""
+        var tempoID = ""
+        var tempoAddress = ""
+        var tempoManager = ""
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
             }
             let managedContext = appDelegate.persistentContainer.viewContext
-
-            let entity = NSEntityDescription.entity(forEntityName: "Project", in: managedContext)!
-            let buttonObject = NSManagedObject(entity: entity, insertInto: managedContext)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Project")
             do {
                 try managedContext.save()
+                let savedData = try managedContext.fetch(fetchRequest)
+                
+                for object in savedData {
+                    if object.value(forKey: "name") as? String == title {
+                        if let tempName = object.value(forKey: "name") as? String {
+                            tempoName = tempName
+                            // Access the value of name
+                        }
+                        if let tempID = object.value(forKey: "id") as? String {
+                            tempoID = tempID
+                            // Access the value of id
+                        }
+                        if let tempAddress = object.value(forKey: "address") as? String {
+                            tempoAddress = tempAddress
+                            // Access the value of address
+                        }
+                        if let tempManager = object.value(forKey: "manager") as? String {
+                            tempoManager = tempManager
+                            // Access the value of manager
+                        }
+                        
+                    }
+                    
+                }
+                
             }
+        
             catch let error as NSError {
                 print("Could not save button data. \(error), \(error.userInfo)")
             }
@@ -378,24 +407,28 @@ class OngoingViewController: UIViewController {
         let ProjectIDLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 40))
         ProjectIDLabel.layer.borderWidth = 1.0
         ProjectIDLabel.layer.borderColor = UIColor.black.cgColor
+        ProjectIDLabel.text = tempoID
         //self.ProjectIDTextField = ProjectIDTextField
         newView.addSubview(ProjectIDLabel)
             
         let ProjectTitleLabel = UILabel(frame: CGRect(x: 20, y: 175, width: 200, height: 40))
         ProjectTitleLabel.layer.borderWidth = 1.0
         ProjectTitleLabel.layer.borderColor = UIColor.black.cgColor
+        ProjectTitleLabel.text = tempoName
         //self.ProjectTitleTextField = ProjectTitleTextField
         newView.addSubview(ProjectTitleLabel)
         
         let AddressTextLabel = UILabel(frame: CGRect(x: 20, y: 275, width: 300, height: 40))
         AddressTextLabel.layer.borderWidth = 1.0
         AddressTextLabel.layer.borderColor = UIColor.black.cgColor
+        AddressTextLabel.text = tempoAddress
         //self.AddressTextLabel = AddressTextField
         newView.addSubview(AddressTextLabel)
         
         let ProjectManagerTextLabel = UILabel(frame: CGRect(x: 20, y: 375, width: 200, height: 40))
         ProjectManagerTextLabel.layer.borderWidth = 1.0
         ProjectManagerTextLabel.layer.borderColor = UIColor.black.cgColor
+        ProjectManagerTextLabel.text = tempoManager
         //self.ProjectManagerTextLabel = ProjectManagerTextField
         newView.addSubview(ProjectManagerTextLabel)
         
