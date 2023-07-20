@@ -356,71 +356,19 @@
                                     <action selector="NewProjectBtnPress:" destination="4kI-XL-87L" eventType="touchUpInside" id="Lei-Lc-n1Y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-9F-gQO">
-                                <rect key="frame" x="32" y="171.5" width="300" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="DSF-Tu-bWp"/>
-                                    <constraint firstAttribute="height" constant="21" id="Rzx-wR-ZvD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvT-aa-5G0">
-                                <rect key="frame" x="32" y="221.5" width="300" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="KXU-qo-IW4"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="TQ5-ln-xO5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xW-vp-zG4">
-                                <rect key="frame" x="32" y="271.5" width="300" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="P57-VY-DjQ"/>
-                                    <constraint firstAttribute="height" constant="21" id="QIh-Kp-Sjf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HG5-VP-wXc">
-                                <rect key="frame" x="32" y="321.5" width="300" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="3lB-qA-Q6Y"/>
-                                    <constraint firstAttribute="height" constant="21" id="a6J-s3-5p3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tiF-Lr-Jdk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nGv-bc-ScB" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-275" id="1ea-7M-zBi"/>
-                            <constraint firstItem="1xW-vp-zG4" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="1yG-iu-NFC"/>
                             <constraint firstItem="Hxv-pS-J83" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="135" id="Bsr-UE-zql"/>
-                            <constraint firstItem="fsL-9F-gQO" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="GA1-gZ-Eir"/>
-                            <constraint firstItem="HG5-VP-wXc" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="Jh5-vo-6o5"/>
                             <constraint firstItem="Hxv-pS-J83" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-275" id="Wvs-Oi-Yxx"/>
                             <constraint firstItem="nGv-bc-ScB" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-100" id="Zuh-Tb-brh"/>
-                            <constraint firstItem="CvT-aa-5G0" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-100" id="g77-tP-unf"/>
-                            <constraint firstItem="1xW-vp-zG4" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-50" id="nig-Ls-LqZ"/>
-                            <constraint firstItem="CvT-aa-5G0" firstAttribute="centerX" secondItem="XeP-ut-8Uz" secondAttribute="centerX" constant="-25" id="nvF-S8-Wbg"/>
-                            <constraint firstItem="fsL-9F-gQO" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" constant="-150" id="oNL-9K-ZeU"/>
-                            <constraint firstItem="HG5-VP-wXc" firstAttribute="centerY" secondItem="XeP-ut-8Uz" secondAttribute="centerY" id="uIu-MM-1fe"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="ProjectDate" destination="HG5-VP-wXc" id="1re-mc-GhR"/>
-                        <outlet property="ProjectID" destination="fsL-9F-gQO" id="r3C-z4-uwa"/>
-                        <outlet property="ProjectManager" destination="1xW-vp-zG4" id="eTJ-6t-hys"/>
-                        <outlet property="ProjectTitle" destination="CvT-aa-5G0" id="Eaa-CM-SkA"/>
                         <segue destination="24e-OJ-hg0" kind="showDetail" identifier="backprojectfromongoing" id="m2X-N5-gK4"/>
                     </connections>
                 </viewController>

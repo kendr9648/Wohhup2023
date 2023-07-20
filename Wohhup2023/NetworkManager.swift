@@ -45,7 +45,7 @@ class NetworkManager {
             fetchRequest.predicate = predicate
             do {
                 // replace url with actual URL !!!
-                guard let url = URL(string: "https://main.d2720hshuc877f.amplifyapp.com/") else {
+                guard let url = URL(string: "https://docs.google.com/spreadsheets/d/1IISKXwts-v3Nc6LyLVqJUIn00BbmTxLcTjezGNXhIOM/edit#gid=0") else {
                     print("Invalid URL")
                     return
                 }

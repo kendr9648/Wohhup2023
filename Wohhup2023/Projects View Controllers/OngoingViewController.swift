@@ -16,6 +16,8 @@ import Amplify
 
 class OngoingViewController: UIViewController {
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -85,12 +87,6 @@ class OngoingViewController: UIViewController {
         } catch let error as NSError {
             print("Failed to fetch data. Error: \(error), \(error.userInfo)")
         }
-        for objects in ProjectsArray {
-            ProjectID.text = objects.ID
-            ProjectTitle.text = objects.name
-            ProjectManager.text = objects.manager
-            ProjectDate.text = objects.address
-        }
     }
     
     
@@ -115,11 +111,11 @@ class OngoingViewController: UIViewController {
         view.addSubview(textField)
     }
     
+    var ProjectID = ""
+    var ProjectTitle = ""
+    var ProjectManager = ""
+    var ProjectAddress = ""
     
-    @IBOutlet weak var ProjectID: UILabel!
-    @IBOutlet weak var ProjectTitle: UILabel!
-    @IBOutlet weak var ProjectManager: UILabel!
-    @IBOutlet weak var ProjectDate: UILabel!
     
     
     var ProjectsArray: [Projects] = []
@@ -220,16 +216,16 @@ class OngoingViewController: UIViewController {
         //test print
         print("save button pressed")
         
-        ProjectID.text = ProjectIDTextField?.text ?? ""
-        ProjectTitle.text = ProjectTitleTextField?.text ?? ""
-        ProjectManager.text = ProjectManagerTextField?.text ?? ""
-        ProjectDate.text = AddressTextField?.text ?? ""
-        if ProjectID.text == "" || ProjectTitle.text == "" || ProjectManager.text == "" || ProjectDate.text == "" {
+        ProjectID = ProjectIDTextField?.text ?? ""
+        ProjectTitle = ProjectTitleTextField?.text ?? ""
+        ProjectManager = ProjectManagerTextField?.text ?? ""
+        ProjectAddress = AddressTextField?.text ?? ""
+        if ProjectID == "" || ProjectTitle == "" || ProjectManager == "" || ProjectAddress == "" {
             showErrorAlert(message: "Please fill in all fields before saving.")
         }
         else {
             sender.superview?.removeFromSuperview()
-            let project = Projects(name: ProjectTitle.text, ID: ProjectID.text, manager: ProjectManager.text, address: ProjectDate.text)
+            let project = Projects(name: ProjectTitle, ID: ProjectID, manager: ProjectManager, address: ProjectAddress)
             ProjectsArray.append(project)
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -253,7 +249,7 @@ class OngoingViewController: UIViewController {
             } catch let error as NSError {
                 print("Failed to save array. Error: \(error), \(error.userInfo)")
             }
-            generateButtons(title: ProjectTitle.text ?? "")
+            generateButtons(title: ProjectTitle)
         }
     }
     
@@ -399,10 +395,14 @@ class OngoingViewController: UIViewController {
         view.addSubview(newView)
         
         let backButton = UIButton(type: .system)
-        backButton.setTitle("Cancel", for: .normal)
+        backButton.setTitle("Back", for: .normal)
         backButton.frame = CGRect(x: 16, y: 16, width: 60, height: 40)
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
         newView.addSubview(backButton)
+        
+        let ProjectIDLabelTitle = UILabel(frame: CGRect(x: 20, y: 43, width: 200, height: 40))
+        ProjectIDLabelTitle.text = "Project ID"
+        newView.addSubview(ProjectIDLabelTitle)
         
         let ProjectIDLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 40))
         ProjectIDLabel.layer.borderWidth = 1.0
@@ -410,22 +410,34 @@ class OngoingViewController: UIViewController {
         ProjectIDLabel.text = tempoID
         //self.ProjectIDTextField = ProjectIDTextField
         newView.addSubview(ProjectIDLabel)
+        
+        let ProjectNameTitleLabel = UILabel(frame: CGRect(x: 20, y: 123, width: 200, height: 40))
+        ProjectNameTitleLabel.text = "Project Name"
+        newView.addSubview(ProjectNameTitleLabel)
             
-        let ProjectTitleLabel = UILabel(frame: CGRect(x: 20, y: 175, width: 200, height: 40))
+        let ProjectTitleLabel = UILabel(frame: CGRect(x: 20, y: 155, width: 200, height: 40))
         ProjectTitleLabel.layer.borderWidth = 1.0
         ProjectTitleLabel.layer.borderColor = UIColor.black.cgColor
         ProjectTitleLabel.text = tempoName
         //self.ProjectTitleTextField = ProjectTitleTextField
         newView.addSubview(ProjectTitleLabel)
         
-        let AddressTextLabel = UILabel(frame: CGRect(x: 20, y: 275, width: 300, height: 40))
+        let ProjectAddressTitleLabel = UILabel(frame: CGRect(x: 20, y: 203, width: 200, height: 40))
+        ProjectAddressTitleLabel.text = "Project Address"
+        newView.addSubview(ProjectAddressTitleLabel)
+        
+        let AddressTextLabel = UILabel(frame: CGRect(x: 20, y: 235, width: 200, height: 40))
         AddressTextLabel.layer.borderWidth = 1.0
         AddressTextLabel.layer.borderColor = UIColor.black.cgColor
         AddressTextLabel.text = tempoAddress
         //self.AddressTextLabel = AddressTextField
         newView.addSubview(AddressTextLabel)
         
-        let ProjectManagerTextLabel = UILabel(frame: CGRect(x: 20, y: 375, width: 200, height: 40))
+        let ProjectManagerTitleLabel = UILabel(frame: CGRect(x: 20, y: 283, width: 200, height: 40))
+        ProjectManagerTitleLabel.text = "Project Manager"
+        newView.addSubview(ProjectManagerTitleLabel)
+        
+        let ProjectManagerTextLabel = UILabel(frame: CGRect(x: 20, y: 315, width: 200, height: 40))
         ProjectManagerTextLabel.layer.borderWidth = 1.0
         ProjectManagerTextLabel.layer.borderColor = UIColor.black.cgColor
         ProjectManagerTextLabel.text = tempoManager
