@@ -10,6 +10,8 @@ import SwiftUI
 import UIKit
 import Network
 import CoreData
+import GoogleAPIClientForREST
+import GTMSessionFetcher
 
 class NetworkManager {
     let session = URLSession.shared
