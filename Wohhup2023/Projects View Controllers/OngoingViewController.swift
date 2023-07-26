@@ -102,6 +102,9 @@ class OngoingViewController: UIViewController {
     var buttonArray: [UIButton] = []
     var buttonStackView: UIStackView!
     var scrollView: UIScrollView!
+    
+    let service = GTLRSheetsService()
+
 
 
     
@@ -447,6 +450,28 @@ class OngoingViewController: UIViewController {
         newView.addSubview(ProjectManagerTextLabel)
         
     }
+    
+    func writeToSheet() {
+        // Replace with your spreadsheet ID and sheet name
+        let spreadsheetId = "YOUR_SPREADSHEET_ID"
+        let sheetName = "Sheet1"
+
+        let range = "\(sheetName)!A1" // Write to cell A1
+        let valueRange = GTLRSheets_ValueRange.init()
+        valueRange.values = [["Hello, world!"]] // Replace with your data
+
+        let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.query(withObject: valueRange, spreadsheetId: spreadsheetId, range: range)
+        query.valueInputOption = "RAW" // Use "RAW" for unformatted data
+
+        service.executeQuery(query) { (ticket, result, error) in
+            if let error = error {
+                print("Error writing to Google Sheets: \(error.localizedDescription)")
+            } else {
+                print("Data written successfully to Google Sheets!")
+            }
+        }
+    }
+
     
     
 }
