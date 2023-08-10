@@ -133,7 +133,7 @@ class OngoingViewController: UIViewController {
     var AddressTextField: UITextField?
     
 
-    //New project button is pressed
+    //MARK: New project created.
     @IBAction func NewProjectBtnPress(_ sender: Any) {
         let newView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         newView.backgroundColor = UIColor.white
@@ -215,7 +215,7 @@ class OngoingViewController: UIViewController {
     }
     
 
-    // Save button is pressed
+    // MARK: Save button pressed
     @objc func saveButtonPressed(_ sender: UIButton) {
         
         //test print
@@ -303,6 +303,7 @@ class OngoingViewController: UIViewController {
             }
     }
     
+    // MARK: Save a new Project data into a button
     func generateButtons(title: String) {
         // Create a new button
         let button = UIButton(type: .system)
@@ -350,6 +351,7 @@ class OngoingViewController: UIViewController {
             }
     }
     
+    // MARK: View individual Project
     @objc func buttonTapped(_ sender: UIButton) {
         
         let title = sender.title(for: .normal)
@@ -451,6 +453,7 @@ class OngoingViewController: UIViewController {
         
     }
     
+    // MARK: Send data google API
     func writeToSheet() {
         // Replace with your spreadsheet ID and sheet name
         let spreadsheetId = "YOUR_SPREADSHEET_ID"
